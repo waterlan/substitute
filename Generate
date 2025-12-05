@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -x
+
+C3PO=c3po-0.20.41
+
+VERSION=1.4.3
+
+${C3PO} S.G -execVersion $VERSION -overloaded -distr -binDir '${HOME}/bin' \
+-objDir objects -srcDir src  -f $* 
+
+#patch -p1 < util-file-cc.patch

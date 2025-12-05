@@ -1,0 +1,47 @@
+2025-12-05 Erwin Waterlander <waterlan@xs4all.nl>
+	* Add GNU GPL V2 license and publish Substitute on GitHub.
+	* Generate: c3po is c3po-0.20.41
+	* version 1.4.3
+
+2012-02-02 Erwin Waterlander <waterlan@xs4all.nl>
+	* src/Search_match.cc: Restore original file permissions of the original file.
+	  For instance execute permission of shell scripts was lost.
+	* src/Search_match.cc: Restore original file owner and group.
+	  Not restoring the owner/group could be destructive, eg if root converts a file the
+	  original owner cannot read it anymore.
+	  Not restoring the group could be a security risk. Eg if the group is
+	  changed such that more people are able to read the file.
+	* VERSION.h: version 1.4.2
+
+2011-10-03 Erwin Waterlander <waterlan@xs4all.nl>
+	* util/file.cc: openW(), more informative error messages.
+	* ChangeLog: ChangeLog syntax.
+
+2011-09-30 Ondrej Popp
+	* 1.4 TAG S-1-4
+	* src/Search_match.cc: bugfix, don't backup when no match is found.
+
+2011-09-30 Ondrej Popp
+	* 1.3 TAG S-1-3
+	* src/File.cc: Improved patch based on e~mail from Erwin Waterlander  
+
+2011-09-30 Ondrej Popp
+	* 1.2 TAG S-1-2
+	* -Wconversion -Wsign-conversion fixes   
+
+2011-09-30 Ondrej Popp
+	* 1.1   TAG : S-1-1
+	* src/File.cc: Incorporated patch from Erwin Waterlander, (2003-02-04) 
+	* Generate: c3po is c3po-0.20.40
+
+2003-02-05 Erwin Waterlander <waterlan@xs4all.nl>
+	* Usage.cc: Version 1.0.0 and date.
+	* INSTALL : new file.
+	* Generate: used c3po-0.21.0.28 to generate gcc 3.x compatible source code (-strictDfltPars).
+	* src/Imakefile: (create relocatable object).
+
+2003-02-04 Erwin Waterlander <waterlan@xs4all.nl>
+	* util/file.cc: bugfix: core dump when argument is not a regular file (e.g. a directory).
+	  This must be fixed in c3po later.
+	* added file ChangeLog
+

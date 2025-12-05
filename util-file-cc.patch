@@ -1,0 +1,54 @@
+diff --git a/util/file.cc b/util/file.cc
+index 70e0187..f3b4f04 100644
+--- a/util/file.cc
++++ b/util/file.cc
+@@ -1,4 +1,5 @@
+ // Copyright (C) 1994-2006 Ondrej Popp
++// Copyright (C) 2003-2011 Erwin Waterlander
+ // 
+ // This program is free software; you can redistribute it and/or
+ // modify it under the terms of the GNU General Public License
+@@ -20,6 +21,7 @@
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
++#include <errno.h>
+ 
+ #include "std_macro.h"
+ #include "structures.h"
+@@ -82,6 +84,8 @@ expfun FILE * openW(text filename,
+    size_t index;
+    char moveName[STRING_SIZE];
+    FILE *fo;
++   char *errstr;
++
+    if (existsFile(filename) &&
+        Backup)
+    {
+@@ -93,8 +97,13 @@ expfun FILE * openW(text filename,
+          index = index + 1;
+       }
+ 
+-      fprintf(getLogStream(), "\n- existing file '%s' has been moved to '%s',", filename, moveName);
+-      rename(filename, moveName);
++      if (rename(filename, moveName) == -1)
++      {
++	  errstr = strerror(errno);
++	  fprintf(stderr, "****** Substitute : problems renaming %s to %s: %s\n", filename, moveName, errstr);
++      }
++      else
++          fprintf(getLogStream(), "\n- existing file '%s' has been moved to '%s',", filename, moveName);
+    }
+ 
+    fo = fopen(filename, "w");
+@@ -102,7 +111,9 @@ expfun FILE * openW(text filename,
+       fprintf(getLogStream(), "\n- generating '%s'\n", filename);
+    else
+    {
+-      fprintf(getErrorStream(), "\n- couldn't open '%s', using stdout...\n", filename);
++      errstr = strerror(errno);
++      fprintf(getErrorStream(), "\n- couldn't open '%s' for write: %s\n", filename, errstr);
++      fprintf(getErrorStream(), "- using stdout...\n");
+       fo = stdout;
+    }
+ 

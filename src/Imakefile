@@ -1,0 +1,33 @@
+#define CONFIG_TOP
+#include "../Config.h"
+#undef CONFIG_TOP
+
+
+SRCS = Command.cc Search_match.cc Action.cc Actionset.cc File.cc Version.cc
+OBJS = $(SRCS:.cc=.o)
+
+INCLUDES = -I.. -I../util -I../objects
+
+CXXOPTIONS = $(CXX_SRC_OPTIONS)
+
+TGTPATH = ../$(OBJDIR)
+
+vpath %.o $(TGTPATH)
+
+BUILD_UTIL_PATH = ../scripts
+
+AllTarget(Build.h)
+
+NormalLibraryTarget(src,$(OBJS))
+DependTarget()
+
+Build.h : $(SRCS)
+	$(BUILD_UTIL_PATH)/mkBuild > Build.h
+
+clean ::
+	rm -f *.tmp* makefile Makefile
+
+#define CONFIG_BOT
+#include "../Config.h"
+#undef CONFIG_BOT
+

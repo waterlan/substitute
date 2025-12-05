@@ -1,0 +1,71 @@
+XCOMM Copyright (C) 1994-2006 Ondrej Popp
+XCOMM 
+XCOMM This program is free software; you can redistribute it and/or
+XCOMM modify it under the terms of the GNU General Public License
+XCOMM as published by the Free Software Foundation; either version 2
+XCOMM of the License, or (at your option) any later version.
+XCOMM 
+XCOMM This program is distributed in the hope that it will be useful,
+XCOMM but WITHOUT ANY WARRANTY; without even the implied warranty of
+XCOMM MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+XCOMM GNU General Public License for more details.
+XCOMM 
+XCOMM You should have received a copy of the GNU General Public License
+XCOMM along with this program; if not, write to the Free Software
+XCOMM Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+#define CONFIG_TOP
+#include "../Config.h"
+#undef CONFIG_TOP
+
+GEN_SRCS = \
+search_rangeset.cc \
+search_range.cc \
+search_match.cc \
+action.cc \
+actionset.cc \
+nameset.cc \
+intset.cc \
+intsets.cc \
+objset.cc
+
+PROTECTED_SRCS =
+
+SRCS = $(GEN_SRCS) $(PROTECTED_SRCS) $(EXTRA_SRCS)
+
+OBJS = $(SRCS:.cc=.o)
+
+GEN_HDRS = \
+search_rangeset.h \
+search_range.h \
+search_match.h \
+action.h \
+actionset.h \
+nameset.h \
+intset.h \
+intsets.h \
+objset.h
+
+PROTECTED_HDRS =
+
+INCLUDE_FILES = $(GEN_HDRS) $(PROTECTED_HDRS)
+
+INCLUDES = -I.. -I../src -I../util
+
+CXXOPTIONS = $(CXX_OBJECT_OPTIONS)
+
+TGTPATH = ../$(OBJDIR)
+
+vpath %.o $(TGTPATH)
+
+NormalLibraryTarget(objects,$(OBJS))
+DependTarget()
+
+
+clean ::
+	rm -f *.tmp*
+
+#define CONFIG_BOT
+#include "../Config.h"
+#undef CONFIG_BOT
+

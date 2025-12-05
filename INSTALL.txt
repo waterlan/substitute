@@ -1,0 +1,6 @@
+
+1) Edit file 'Config.h'.
+
+2) Run script 'Compile'.
+
+

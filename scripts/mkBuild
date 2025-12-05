@@ -1,0 +1,10 @@
+# set -x
+
+echo \#define BUILD_DATE ' '\"`date`\"
+
+#UNAME=`uname`
+#if [ $UNAME = "Linux" ] ; then
+#   ECHO_OPTS=-e;
+#fi
+
+echo $ECHO_OPTS \#define SYSTEM_INFO \"`uname -m` \\c ; echo running `uname -svr`\"
