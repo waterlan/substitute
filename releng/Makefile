@@ -1,4 +1,6 @@
 VERSION = 1.4.3
+MACHINE := $(shell uname -m)
+KERNELNAME := $(shell uname -s)
 
 OBJ = \
  substitute-$(VERSION)/S \
@@ -24,4 +26,4 @@ disthead:
 bin:
 	cd ..; tar xaf substitute-$(VERSION).tar.gz
 	cd ../substitute-$(VERSION); ./Compile
-	cd ..; tar caf substitute-linux-x86_64-$(VERSION).tar.gz $(OBJ)
+	cd ..; tar caf substitute-$(VERSION)-$(KERNELNAME)-$(MACHINE).tar.gz $(OBJ)
