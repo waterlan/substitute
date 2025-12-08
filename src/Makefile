@@ -1102,7 +1102,7 @@ Build.h : $(SRCS)
 	$(BUILD_UTIL_PATH)/mkBuild > Build.h
 
 cleandir ::
-	rm -f *.tmp* makefile Makefile
+	rm -f *.tmp*
 
 # Copyright (C) 1994-2006 Ondrej Popp
 #

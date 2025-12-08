@@ -25,7 +25,7 @@ Build.h : $(SRCS)
 	$(BUILD_UTIL_PATH)/mkBuild > Build.h
 
 clean ::
-	rm -f *.tmp* makefile Makefile
+	rm -f *.tmp*
 
 #define CONFIG_BOT
 #include "../Config.h"
