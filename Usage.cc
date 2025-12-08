@@ -23,7 +23,7 @@
 
 #include "text.h"
 #include "error.h"
-#include "Version.h"
+#include "src/Version.h"
 
 expfun void Usage(int argc,
                   char** argv)

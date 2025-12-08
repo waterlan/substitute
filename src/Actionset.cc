@@ -22,8 +22,8 @@
 
 #include "text.h"
 #include "Command.h"
-#include "action.h"
-#include "actionset.h" 
+#include <action.h>
+#include <actionset.h>
 #include "arithmetic.h" 
 
 static text correct(text pattern)

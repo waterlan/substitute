@@ -31,15 +31,15 @@
                     
 #include "text.h"
 #include "nameset.h"
-#include "command.h"
+#include <command.h>
 
 #include "search_range.h"
 #include "search_rangeset.h"
-#include "search_match.h"
+#include <search_match.h>
 #include "arithmetic.h"
-#include "action.h"
+#include <action.h>
 #include "Action.h"
-#include "actionset.h"
+#include <actionset.h>
 #include "Actionset.h"
 #include "Command.h"
 #include "File.h"
@@ -417,6 +417,12 @@ expfun rwtext substitute(int argc, char **argv, rwtext startBuffer, text fileNam
    return curBuffer;
 }
 
+#if  defined(__TURBOC__) || defined(__DJGPP__) || defined(__MINGW32__) || defined(__WATCOMC__) || defined(_MSC_VER)
+/* Some compilers have no chown(). */
+#define NO_CHOWN 1
+#endif
+
+
 expfun void substitute(int argc, char **argv)
 {
    int fileIndex = getBeginFileList(argc, argv);
@@ -455,11 +461,13 @@ expfun void substitute(int argc, char **argv)
                /* Required when a different user (e.g. root) has write permission on the original file. */
                /* Make sure that the original owner can still access the file. */
                /* Make sure that others are not able to read the file who could not read the file before. */
+#ifndef NO_CHOWN
                if (chown(fileName, StatBuf.st_uid, StatBuf.st_gid))
                {
                     errstr = strerror(errno);
                     fprintf(stderr, "%s : Failed to change the owner and group of output file %s: %s\n", "****** Substitute", fileName, errstr);
                }
+#endif
             }
             free((void *) buffer);
          } 

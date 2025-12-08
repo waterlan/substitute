@@ -1,6 +1,16 @@
+BUILDING
 
-1) Edit file 'Config.h'.
+    If you have a working imake flow on your system
+    type the following command to compile:
 
-2) Run script 'Compile'.
+        ./Compile
 
+    If you don't have a working imake flow
+    you can try using the included Makefiles:
 
+        make
+
+    On Windows use msys2 mingw64. Take care you
+    have regex library libgnurx installed.
+
+        make -f mingw.mak

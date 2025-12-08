@@ -20,7 +20,7 @@
 #include "std_macro.h"
 
 #include "text.h"
-#include "action.h"
+#include <action.h>
 
 expfun bool isSubstitute(action a)
 {

@@ -28,7 +28,7 @@
 #include "Constants.h"
 
 #include "text.h"
-#include "file.h"
+#include <file.h>
 
 expfun rwtext getBuffer(text filename)
 {
