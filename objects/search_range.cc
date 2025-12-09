@@ -29,8 +29,8 @@
 #include "search_range.h"
 
 
-expfun search_range search_rangeNew(int begin = 0,
-                                    int end = 0)
+expfun search_range search_rangeNew(regoff_t begin = 0,
+                                    regoff_t end = 0)
 {
    search_range s = (search_range) malloc (sizeof(search_range_struct));
    if (s != NULL)
@@ -44,7 +44,7 @@ expfun search_range search_rangeNew(int begin = 0,
 
    return s;
 }
-expfun bool eqBegin(int begin,
+expfun bool eqBegin(regoff_t begin,
                     search_range s)
 {
    if (s == NULL)
@@ -54,7 +54,7 @@ expfun bool eqBegin(int begin,
    else
       return false;
 }
-expfun bool eqEnd(int end,
+expfun bool eqEnd(regoff_t end,
                   search_range s)
 {
    if (s == NULL)
@@ -108,14 +108,14 @@ expfun bool Eq(search_range a,
    else
       return true;
 }
-expfun int getBegin(search_range s)
+expfun regoff_t getBegin(search_range s)
 {
    if (s != NULL)
       return s->begin;
    else
       return 0;
 }
-expfun int getEnd(search_range s)
+expfun regoff_t getEnd(search_range s)
 {
    if (s != NULL)
       return s->end;
@@ -129,14 +129,14 @@ expfun search_rangeset getSubranges(search_range s)
    else
       return NULL;
 }
-expfun search_range setBegin(int begin,
+expfun search_range setBegin(regoff_t begin,
                              search_range s)
 {
    if (s != NULL)
       s->begin = begin;
    return s;
 }
-expfun search_range setEnd(int end,
+expfun search_range setEnd(regoff_t end,
                            search_range s)
 {
    if (s != NULL)
@@ -231,9 +231,9 @@ expfun void dump(text Offset,
    {
       fprintf(fp, "%s{\n", Offset);
 
-      fprintf(fp, "%sint begin : %d\n", new_Offset, getBegin(s));
+      fprintf(fp, "%sint begin : %ld\n", new_Offset, (long)getBegin(s));
 
-      fprintf(fp, "%sint end : %d\n", new_Offset, getEnd(s));
+      fprintf(fp, "%sint end : %ld\n", new_Offset, (long)getEnd(s));
 
       if (hasSubranges(s) || showEmpty)
       {

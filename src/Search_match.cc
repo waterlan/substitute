@@ -63,7 +63,7 @@ expfun size_t size(search_match s)
    return size(getRanges(s));
 } 
 
-expfun void extend_search_match(search_match s, text buffer, int match_offset, bool verbose)
+expfun void extend_search_match(search_match s, text buffer, regoff_t match_offset, bool verbose)
 {  
    int error; 
    char error_msg[STRING_SIZE]; 
@@ -71,7 +71,7 @@ expfun void extend_search_match(search_match s, text buffer, int match_offset, b
    regmatch_t pmatch[STRING_SIZE];
     
    search_range r;   
-   int    offset;    
+   regoff_t offset;
    size_t nmatch;  
 
    size_t index;  
@@ -102,8 +102,8 @@ expfun void extend_search_match(search_match s, text buffer, int match_offset, b
 
          if (pmatch[0].rm_eo > pmatch[0].rm_so)
          {
-            r = search_rangeNew(pmatch[0].rm_so*((int) sizeof(char)) + match_offset + offset, 
-                                (pmatch[0].rm_eo - 1)*((int) sizeof(char)) + match_offset + offset);  
+            r = search_rangeNew(pmatch[0].rm_so*((regoff_t) sizeof(char)) + match_offset + offset,
+                                (pmatch[0].rm_eo - 1)*((regoff_t) sizeof(char)) + match_offset + offset);
              
             if (re.re_nsub > 0)
             {  
@@ -113,8 +113,8 @@ expfun void extend_search_match(search_match s, text buffer, int match_offset, b
                {
                   if (pmatch[index].rm_eo > pmatch[index].rm_so)
                   {
-                     sub_r = search_rangeNew(pmatch[index].rm_so*((int) sizeof(char)) + match_offset + offset, 
-                                             (pmatch[index].rm_eo - 1)*((int) sizeof(char)) + match_offset + offset);  
+                     sub_r = search_rangeNew(pmatch[index].rm_so*((regoff_t) sizeof(char)) + match_offset + offset,
+                                             (pmatch[index].rm_eo - 1)*((regoff_t) sizeof(char)) + match_offset + offset);
                      add(sub_r, subranges);
                   }
                   else
@@ -131,7 +131,7 @@ expfun void extend_search_match(search_match s, text buffer, int match_offset, b
            /*   TRACE(fprintf(stdout, "r->begin %d r->end %d\n", r->begin, r->end);)  */
 
             add(r, s->ranges);  
-            offset = offset + pmatch[0].rm_eo*((int) sizeof(char));
+            offset = offset + pmatch[0].rm_eo*((regoff_t) sizeof(char));
             error = regexec(&re, buffer + offset, nmatch, pmatch, 0); 
          }
          else 

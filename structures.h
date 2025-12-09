@@ -18,6 +18,7 @@
 #define structures_INCLUDED
 
 #include <stdlib.h>
+#include <regex.h>
 
 #ifndef C3PO_BASIC_TYPES_INCLUDED
 #define C3PO_BASIC_TYPES_INCLUDED
@@ -60,8 +61,8 @@
 
    typedef struct search_range_struct
    {
-      int begin;
-      int end;
+      regoff_t begin;
+      regoff_t end;
       search_rangeset subranges;
    } search_range_struct, *search_range;
 

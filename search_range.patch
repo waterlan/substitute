@@ -1,0 +1,157 @@
+diff --git a/objects/search_range.cc b/objects/search_range.cc
+index 8304dff..5810b5b 100644
+--- a/objects/search_range.cc
++++ b/objects/search_range.cc
+@@ -29,8 +29,8 @@
+ #include "search_range.h"
+ 
+ 
+-expfun search_range search_rangeNew(int begin = 0,
+-                                    int end = 0)
++expfun search_range search_rangeNew(regoff_t begin = 0,
++                                    regoff_t end = 0)
+ {
+    search_range s = (search_range) malloc (sizeof(search_range_struct));
+    if (s != NULL)
+@@ -44,7 +44,7 @@ expfun search_range search_rangeNew(int begin = 0,
+ 
+    return s;
+ }
+-expfun bool eqBegin(int begin,
++expfun bool eqBegin(regoff_t begin,
+                     search_range s)
+ {
+    if (s == NULL)
+@@ -54,7 +54,7 @@ expfun bool eqBegin(int begin,
+    else
+       return false;
+ }
+-expfun bool eqEnd(int end,
++expfun bool eqEnd(regoff_t end,
+                   search_range s)
+ {
+    if (s == NULL)
+@@ -108,14 +108,14 @@ expfun bool Eq(search_range a,
+    else
+       return true;
+ }
+-expfun int getBegin(search_range s)
++expfun regoff_t getBegin(search_range s)
+ {
+    if (s != NULL)
+       return s->begin;
+    else
+       return 0;
+ }
+-expfun int getEnd(search_range s)
++expfun regoff_t getEnd(search_range s)
+ {
+    if (s != NULL)
+       return s->end;
+@@ -129,14 +129,14 @@ expfun search_rangeset getSubranges(search_range s)
+    else
+       return NULL;
+ }
+-expfun search_range setBegin(int begin,
++expfun search_range setBegin(regoff_t begin,
+                              search_range s)
+ {
+    if (s != NULL)
+       s->begin = begin;
+    return s;
+ }
+-expfun search_range setEnd(int end,
++expfun search_range setEnd(regoff_t end,
+                            search_range s)
+ {
+    if (s != NULL)
+@@ -231,9 +231,9 @@ expfun void dump(text Offset,
+    {
+       fprintf(fp, "%s{\n", Offset);
+ 
+-      fprintf(fp, "%sint begin : %d\n", new_Offset, getBegin(s));
++      fprintf(fp, "%sint begin : %ld\n", new_Offset, (long)getBegin(s));
+ 
+-      fprintf(fp, "%sint end : %d\n", new_Offset, getEnd(s));
++      fprintf(fp, "%sint end : %ld\n", new_Offset, (long)getEnd(s));
+ 
+       if (hasSubranges(s) || showEmpty)
+       {
+diff --git a/objects/search_range.h b/objects/search_range.h
+index 80ee6a1..3f286a9 100644
+--- a/objects/search_range.h
++++ b/objects/search_range.h
+@@ -23,9 +23,9 @@
+ // End Extra Forward Declarations
+ 
+ // External Functions
+-   extern bool eqBegin(int begin,
++   extern bool eqBegin(regoff_t begin,
+                        search_range s);
+-   extern bool eqEnd(int end,
++   extern bool eqEnd(regoff_t end,
+                      search_range s);
+    extern bool eqSelfSubranges(search_rangeset subranges,
+                                search_range s);
+@@ -35,12 +35,12 @@
+                       search_range b);
+    extern bool Eq(search_range a,
+                   search_range b);
+-   extern int getBegin(search_range s);
+-   extern int getEnd(search_range s);
++   extern regoff_t getBegin(search_range s);
++   extern regoff_t getEnd(search_range s);
+    extern search_rangeset getSubranges(search_range s);
+-   extern search_range setBegin(int begin,
++   extern search_range setBegin(regoff_t begin,
+                                 search_range s);
+-   extern search_range setEnd(int end,
++   extern search_range setEnd(regoff_t end,
+                               search_range s);
+    extern search_range setSubranges(search_rangeset subranges,
+                                     search_range s);
+@@ -49,8 +49,8 @@
+    extern void deepFree(search_range s);
+ 
+    #ifdef search_range_cc
+-      extern search_range search_rangeNew(int begin,
+-                                          int end);
++      extern search_range search_rangeNew(regoff_t begin,
++                                          regoff_t end);
+       extern search_range copy(search_range src,
+                                size_t level);
+       extern void dump(text Offset,
+@@ -61,8 +61,8 @@
+                        size_t level);
+ 
+    #else
+-      extern search_range search_rangeNew(int begin = 0,
+-                                          int end = 0);
++      extern search_range search_rangeNew(regoff_t begin = 0,
++                                          regoff_t end = 0);
+       extern search_range copy(search_range src,
+                                size_t level = 0);
+       extern void dump(text Offset,
+diff --git a/structures.h b/structures.h
+index 63c9eef..c5a3f28 100644
+--- a/structures.h
++++ b/structures.h
+@@ -18,6 +18,7 @@
+ #define structures_INCLUDED
+ 
+ #include <stdlib.h>
++#include <regex.h>
+ 
+ #ifndef C3PO_BASIC_TYPES_INCLUDED
+ #define C3PO_BASIC_TYPES_INCLUDED
+@@ -60,8 +61,8 @@
+ 
+    typedef struct search_range_struct
+    {
+-      int begin;
+-      int end;
++      regoff_t begin;
++      regoff_t end;
+       search_rangeset subranges;
+    } search_range_struct, *search_range;
+ 

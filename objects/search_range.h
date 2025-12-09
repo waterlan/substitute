@@ -23,9 +23,9 @@
 // End Extra Forward Declarations
 
 // External Functions
-   extern bool eqBegin(int begin,
+   extern bool eqBegin(regoff_t begin,
                        search_range s);
-   extern bool eqEnd(int end,
+   extern bool eqEnd(regoff_t end,
                      search_range s);
    extern bool eqSelfSubranges(search_rangeset subranges,
                                search_range s);
@@ -35,12 +35,12 @@
                       search_range b);
    extern bool Eq(search_range a,
                   search_range b);
-   extern int getBegin(search_range s);
-   extern int getEnd(search_range s);
+   extern regoff_t getBegin(search_range s);
+   extern regoff_t getEnd(search_range s);
    extern search_rangeset getSubranges(search_range s);
-   extern search_range setBegin(int begin,
+   extern search_range setBegin(regoff_t begin,
                                 search_range s);
-   extern search_range setEnd(int end,
+   extern search_range setEnd(regoff_t end,
                               search_range s);
    extern search_range setSubranges(search_rangeset subranges,
                                     search_range s);
@@ -49,8 +49,8 @@
    extern void deepFree(search_range s);
 
    #ifdef search_range_cc
-      extern search_range search_rangeNew(int begin,
-                                          int end);
+      extern search_range search_rangeNew(regoff_t begin,
+                                          regoff_t end);
       extern search_range copy(search_range src,
                                size_t level);
       extern void dump(text Offset,
@@ -61,8 +61,8 @@
                        size_t level);
 
    #else
-      extern search_range search_rangeNew(int begin = 0,
-                                          int end = 0);
+      extern search_range search_rangeNew(regoff_t begin = 0,
+                                          regoff_t end = 0);
       extern search_range copy(search_range src,
                                size_t level = 0);
       extern void dump(text Offset,
