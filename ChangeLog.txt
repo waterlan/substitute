@@ -1,3 +1,10 @@
+2025-12-09 Erwin Waterlander <waterlan@xs4all.nl>
+	* Made code compile on Windows with msys2/mingw64 and Cygwin.
+	  Fixed including header files that have case insensitive
+	  the same name. Fixed issue with type for match begin and
+	  end offset, int -> regoff_t.
+	* version 1.4.4
+
 2025-12-05 Erwin Waterlander <waterlan@xs4all.nl>
 	* Add GNU GPL V2 license and publish Substitute on GitHub.
 	* Generate: c3po is c3po-0.20.41

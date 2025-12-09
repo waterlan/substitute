@@ -17,5 +17,5 @@
 #ifndef VERSION_INCLUDED
 #define VERSION_INCLUDED
 
-#define VERSION "1.4.3"
+#define VERSION "1.4.4"
 #endif

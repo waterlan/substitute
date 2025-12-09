@@ -1,4 +1,4 @@
-VERSION = 1.4.3
+VERSION = 1.4.4
 MACHINE := $(shell uname -m)
 KERNELNAME := $(shell uname -s)
 

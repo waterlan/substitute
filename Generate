@@ -4,7 +4,7 @@ set -x
 
 C3PO=c3po-0.20.41
 
-VERSION=1.4.3
+VERSION=1.4.4
 
 ${C3PO} S.G -execVersion $VERSION -overloaded -distr -binDir '${HOME}/bin' \
 -objDir objects -srcDir src  -f $* 
