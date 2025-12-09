@@ -13,6 +13,7 @@ all:
 	@echo "dist:       create source tar ball of tag"
 	@echo "disthead:   create source tar ball of current HEAD"
 	@echo "bin:        create binary package"
+	@echo "zip:        create binary zip package for Windows"
 tag:
 	cd ..; git tag -a v$(VERSION) -m "Tagging Substitute release $(VERSION)."
 	cd ..; git push origin v$(VERSION)
@@ -27,3 +28,11 @@ bin:
 	cd ..; tar xaf substitute-$(VERSION).tar.gz
 	cd ../substitute-$(VERSION); ./Compile
 	cd ..; tar caf substitute-$(VERSION)-$(KERNELNAME)-$(MACHINE).tar.gz $(OBJ)
+
+zip:
+	cd ..; tar xaf substitute-$(VERSION).tar.gz
+	cd ../substitute-$(VERSION); make clean
+	cd ../substitute-$(VERSION); rm src/Build.h
+	cd ../substitute-$(VERSION); make -f mingw.mak
+	cp /mingw64/bin/libgnurx-0.dll ../substitute-$(VERSION)
+	cd ..; zip substitute-$(VERSION)-$(KERNELNAME)-$(MACHINE).zip $(OBJ) substitute-$(VERSION)/S.exe substitute-$(VERSION)/libgnurx-0.dll
