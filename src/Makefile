@@ -1103,6 +1103,7 @@ Build.h : $(SRCS)
 
 cleandir ::
 	rm -f *.tmp*
+	rm Build.h
 
 # Copyright (C) 1994-2006 Ondrej Popp
 #

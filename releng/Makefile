@@ -25,14 +25,16 @@ disthead:
 	cd ..; git archive --prefix=substitute-head/ --format tar.gz -o substitute-head.tar.gz HEAD
 
 bin:
+	rm -rf ../substitute-$(VERSION)
 	cd ..; tar xaf substitute-$(VERSION).tar.gz
+	cd ../substitute-$(VERSION); make clean
 	cd ../substitute-$(VERSION); ./Compile
 	cd ..; tar caf substitute-$(VERSION)-$(KERNELNAME)-$(MACHINE).tar.gz $(OBJ)
 
 zip:
+	rm -rf ../substitute-$(VERSION)
 	cd ..; tar xaf substitute-$(VERSION).tar.gz
 	cd ../substitute-$(VERSION); make clean
-	cd ../substitute-$(VERSION); rm src/Build.h
 	cd ../substitute-$(VERSION); make -f mingw.mak
 	cp /mingw64/bin/libgnurx-0.dll ../substitute-$(VERSION)
 	cd ..; zip substitute-$(VERSION)-$(KERNELNAME)-$(MACHINE).zip $(OBJ) substitute-$(VERSION)/S.exe substitute-$(VERSION)/libgnurx-0.dll

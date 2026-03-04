@@ -26,6 +26,7 @@ Build.h : $(SRCS)
 
 clean ::
 	rm -f *.tmp*
+	rm Build.h
 
 #define CONFIG_BOT
 #include "../Config.h"
