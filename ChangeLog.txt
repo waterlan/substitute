@@ -2,6 +2,7 @@
 	* src/Build.h: removed.
 	* src/Imakefile: target clean removes src/Build.h.
 	* releng/Makefile: binary has up to date build information.
+	* version 1.4.5
 
 2025-12-09 Erwin Waterlander <waterlan@xs4all.nl>
 	* Made code compile on Windows with msys2/mingw64 and Cygwin.
