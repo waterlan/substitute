@@ -1,0 +1,9 @@
+set(S_SRCS
+  ${S_SRCS}
+  util/arithmetic.cc
+  util/command.cc
+  util/error.cc
+  util/file.cc
+  util/text.cc
+  PARENT_SCOPE
+)

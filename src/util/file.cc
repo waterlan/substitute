@@ -23,8 +23,8 @@
 #include <unistd.h>
 #include <errno.h>
 
-#include "std_macro.h"
 #include "structures.h"
+#include "std_macro.h"
 
 #include "error.h"
 #include "Constants.h"

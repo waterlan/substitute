@@ -14,25 +14,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#ifndef VERSION_INCLUDED
+#define VERSION_INCLUDED
 
-#include "std_macro.h"
-#include "structures.h"
-
-#include "command.h"
-#include "text.h"
-#include "Usage.h"
-
-#include "nameset.h"
-#include "Search_match.h"
-
-expfun void runDriver(int argc,
-                      char** argv)
-{
-   if (argc eq 1)
-      Usage(argc, argv);
-   else
-      substitute(argc, argv);
-}
+#define VERSION "1.5-beta"
+#endif

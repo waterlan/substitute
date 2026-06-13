@@ -14,8 +14,25 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef VERSION_INCLUDED
-#define VERSION_INCLUDED
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-#define VERSION "1.4.5"
-#endif
+#include "std_macro.h"
+#include "structures.h"
+#include "util/error.h"
+#include "util/command.h"
+#include "Usage.h"
+#include "Driver.h"
+
+int main(int argc,
+         char** argv)
+{
+   runDriver(argc, argv);
+
+   /*************** CODE FROM APPEND SECTION *************/
+
+   /*************** END APPEND SECTION *************/
+
+   exit(0);
+}

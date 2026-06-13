@@ -32,10 +32,11 @@ in one go.
 ## WWW
 
 [Substitute on GitHub](https://github.com/waterlan/substitute)
+[Substitute on SourceForge](https://sourceforge.net/projects/substitute/)
 
 ## Authors
 
-Ondrej Popp
+Ondrej Popp <ondrejpopp@users.sourceforge.net>
 
 Erwin Waterlander <waterlan@xs4all.nl>
 

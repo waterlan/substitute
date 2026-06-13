@@ -1,0 +1,10 @@
+set(S_SRCS
+  ${S_SRCS}
+  src/Action.cc
+  src/Actionset.cc
+  src/Command.cc
+  src/File.cc
+  src/Search_match.cc
+  src/Version.cc
+  PARENT_SCOPE
+)

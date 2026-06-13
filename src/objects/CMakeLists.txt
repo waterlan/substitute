@@ -1,0 +1,13 @@
+set(S_SRCS
+  ${S_SRCS}
+  objects/action.cc
+  objects/actionset.cc
+  objects/intset.cc
+  objects/intsets.cc
+  objects/nameset.cc
+  objects/objset.cc
+  objects/search_match.cc
+  objects/search_range.cc
+  objects/search_rangeset.cc
+  PARENT_SCOPE
+)

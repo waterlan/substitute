@@ -1,3 +1,10 @@
+2026-06-14 Erwin Waterlander <waterlan@xs4all.nl>
+	* Migrate to cmake.
+	  It appeared that there was a substitute repo at sourceforge:
+	  https://sourceforge.net/p/substitute
+	  Copied patch to migrate to cmake:
+	  https://sourceforge.net/p/substitute/code/ci/f129b6ac9fb600babe3f76605639223566259587/
+
 2026-03-04 Erwin Waterlander <waterlan@xs4all.nl>
 	* src/Build.h: removed.
 	* src/Imakefile: target clean removes src/Build.h.

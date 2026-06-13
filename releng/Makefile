@@ -1,4 +1,4 @@
-VERSION = 1.4.5
+VERSION = 1.5-beta
 MACHINE := $(shell uname -m)
 KERNELNAME := $(shell uname -s)
 
@@ -27,8 +27,10 @@ disthead:
 bin:
 	rm -rf ../substitute-$(VERSION)
 	cd ..; tar xaf substitute-$(VERSION).tar.gz
-	cd ../substitute-$(VERSION); make clean
-	cd ../substitute-$(VERSION); ./Compile
+	cd ../substitute-$(VERSION); rm -rf build
+	cd ../substitute-$(VERSION); cmake -B build
+	cd ../substitute-$(VERSION); cmake --build build
+	cd ../substitute-$(VERSION); cp build/src/S .
 	cd ..; tar caf substitute-$(VERSION)-$(KERNELNAME)-$(MACHINE).tar.gz $(OBJ)
 
 zip:
