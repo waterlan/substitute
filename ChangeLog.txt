@@ -1,6 +1,9 @@
+2026-06-15 Erwin Waterlander <waterlan@xs4all.nl>
+	* Changed GPLv2 license to GPLv3.
+
 2026-06-14 Erwin Waterlander <waterlan@xs4all.nl>
 	* Migrate to cmake.
-	  It appeared that there was a substitute repo at sourceforge:
+	  Found substitute repo at sourceforge:
 	  https://sourceforge.net/p/substitute
 	  Copied patch to migrate to cmake:
 	  https://sourceforge.net/p/substitute/code/ci/f129b6ac9fb600babe3f76605639223566259587/

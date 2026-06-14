@@ -1,18 +1,17 @@
-XCOMM Copyright (C) 1994-2006 Ondrej Popp
+XCOMM Copyright (C) 1994-2026 Ondrej Popp
 XCOMM 
-XCOMM This program is free software; you can redistribute it and/or
-XCOMM modify it under the terms of the GNU General Public License
-XCOMM as published by the Free Software Foundation; either version 2
-XCOMM of the License, or (at your option) any later version.
-XCOMM 
+XCOMM This program is free software: you can redistribute it and/or modify
+XCOMM it under the terms of the GNU General Public License as published by
+XCOMM the Free Software Foundation, either version 3 of the License, or
+XCOMM (at your option) any later version.
+XCOMM
 XCOMM This program is distributed in the hope that it will be useful,
 XCOMM but WITHOUT ANY WARRANTY; without even the implied warranty of
 XCOMM MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 XCOMM GNU General Public License for more details.
-XCOMM 
+XCOMM
 XCOMM You should have received a copy of the GNU General Public License
-XCOMM along with this program; if not, write to the Free Software
-XCOMM Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+XCOMM along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 OBJDIR = .
 #define PassCDebugFlags 'CXXDEBUGFLAGS=$(CXXDEBUGFLAGS)'
