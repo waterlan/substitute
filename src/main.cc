@@ -20,8 +20,8 @@
 
 #include "std_macro.h"
 #include "structures.h"
-#include "util/error.h"
-#include "util/command.h"
+#include "error.h"
+#include "command.h"
 #include "Usage.h"
 #include "Driver.h"
 

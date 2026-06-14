@@ -25,7 +25,7 @@
 #include "error.h"
 #include "src/Version.h"
 
-expfun void Usage(int argc,
+expfun void Usage(int,
                   char** argv)
 {
     beep(1);

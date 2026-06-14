@@ -2,7 +2,7 @@
 
 set -x
 
-C3PO=c3po-0.20.41
+C3PO=c3po-0.20.42
 
 VERSION=1.5-beta
 

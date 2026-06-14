@@ -6,6 +6,4 @@ BUILDING
     cmake --install build
 
     On Windows use msys2 mingw64. Take care you
-    have regex library libgnurx installed.
-
-        make -f mingw.mak
+    have regex library libtre installed.

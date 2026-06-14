@@ -20,6 +20,10 @@ add_subdirectory(util)
 
 add_executable(S ${S_SRCS})
 
+if(MINGW)
+  target_link_libraries(S regex)
+endif()
+
 install(TARGETS S DESTINATION $ENV{HOME}/bin)
 
 target_include_directories(
