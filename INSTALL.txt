@@ -1,9 +1,18 @@
 BUILDING
 
+  UNIX
 
     cmake -B build
     cmake --build build
     cmake --install build
 
+  WINDOWS
+
     On Windows use msys2 mingw64. Take care you
     have regex library libtre installed.
+    Use msys cmake (/usr/bin/cmake) in MINGW64 environment,
+    because the build runs a shell script.
+
+    /usr/bin/cmake -B build
+    /usr/bin/cmake --build build
+    /usr/bin/cmake --install build
