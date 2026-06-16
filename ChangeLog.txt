@@ -1,3 +1,7 @@
+2026-06-16 Erwin Waterlander <waterlan@xs4all.nl>
+	* Update MINGW build.
+	* version 1.5.0
+
 2026-06-15 Erwin Waterlander <waterlan@xs4all.nl>
 	* Changed GPLv2 license to GPLv3.
 

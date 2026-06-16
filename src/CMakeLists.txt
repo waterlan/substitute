@@ -20,7 +20,8 @@ add_subdirectory(util)
 
 add_executable(S ${S_SRCS})
 
-if(MINGW)
+if(MINGW OR MSYS)
+  message(STATUS "MinGW detected.")
   target_link_libraries(S regex)
 endif()
 

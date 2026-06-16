@@ -1,4 +1,4 @@
-VERSION = 1.5-beta
+VERSION = 1.5.0
 MACHINE := $(shell uname -m)
 KERNELNAME := $(shell uname -s)
 
@@ -7,6 +7,22 @@ OBJ = \
  substitute-$(VERSION)/ChangeLog.txt \
  substitute-$(VERSION)/COPYING.txt \
  substitute-$(VERSION)/README.md
+
+OBJZIP = \
+ substitute-$(VERSION)/S.exe \
+ substitute-$(VERSION)/ChangeLog.txt \
+ substitute-$(VERSION)/COPYING.txt \
+ substitute-$(VERSION)/README.md \
+ substitute-$(VERSION)/libsystre-0.dll \
+ substitute-$(VERSION)/libtre-5.dll \
+ substitute-$(VERSION)/libintl-8.dll \
+ substitute-$(VERSION)/libiconv-2.dll
+
+DLLS = \
+ /mingw64/bin/libsystre-0.dll \
+ /mingw64/bin/libtre-5.dll \
+ /mingw64/bin/libintl-8.dll \
+ /mingw64/bin/libiconv-2.dll
 
 all:
 	@echo "tag:        tag archive"
@@ -36,7 +52,10 @@ bin:
 zip:
 	rm -rf ../substitute-$(VERSION)
 	cd ..; tar xaf substitute-$(VERSION).tar.gz
-	cd ../substitute-$(VERSION); make clean
-	cd ../substitute-$(VERSION); make -f mingw.mak
-	cp /mingw64/bin/libgnurx-0.dll ../substitute-$(VERSION)
-	cd ..; zip substitute-$(VERSION)-$(KERNELNAME)-$(MACHINE).zip $(OBJ) substitute-$(VERSION)/S.exe substitute-$(VERSION)/libgnurx-0.dll
+	cd ../substitute-$(VERSION); rm -rf build
+	cd ../substitute-$(VERSION); /usr/bin/cmake -B build
+	cd ../substitute-$(VERSION); /usr/bin/cmake --build build
+	cd ../substitute-$(VERSION); cp build/src/S.exe .
+	cp $(DLLS) ../substitute-$(VERSION)
+	rm -f substitute-$(VERSION)-$(KERNELNAME)-$(MACHINE).zip
+	cd ..; zip substitute-$(VERSION)-$(KERNELNAME)-$(MACHINE).zip $(OBJZIP)

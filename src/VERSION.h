@@ -16,5 +16,5 @@
 #ifndef VERSION_INCLUDED
 #define VERSION_INCLUDED
 
-#define VERSION "1.5-beta"
+#define VERSION "1.5.0"
 #endif
