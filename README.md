@@ -42,5 +42,5 @@ Erwin Waterlander <waterlan@xs4all.nl>
 
 ## Copyright
 
-The Substitute package is distributed under GNU GPL V2 license.
+The Substitute package is distributed under GNU GPL V3 license.
 See [COPYING](COPYING.txt)
